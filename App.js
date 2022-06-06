@@ -1,20 +1,19 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import React from "react";
+import { NavigationContainer } from "@react-navigation/native";
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import PlayerScreen from "./screens/PlayerScreen";
+import RecorderScreen from "./screens/RecorderScreen";
 
+const Tab = createBottomTabNavigator();
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <React.Fragment>
+      <NavigationContainer>
+        <Tab.Navigator initialRouteName="Record">
+          <Tab.Screen name="Inspelaren" component={RecorderScreen} />
+          <Tab.Screen name="Inspelade ljud" component={PlayerScreen} />
+        </Tab.Navigator>
+      </NavigationContainer>
+    </React.Fragment>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
